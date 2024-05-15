@@ -6,8 +6,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
-
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -140,13 +141,16 @@ public class NotesService {
 
 	}
 
-//	public int getSubjectCounter(String email) {
-//		  User user = userRepository.findUserByEmail(email);
-//		    if (user == null) {
-//		        return 0;
-//		    }
-//		    
-//	}
+	public int getSubjectCounter(String email) {
+		User user = userRepository.findUserByEmail(email);
+		 Set<String> subjectNames = new HashSet<>();
+		    for (Subject subject : user.getSubject()) {
+		        subjectNames.add(subject.getSName());
+		    }
+
+		    return subjectNames.size();
+		    
+	}
 	public int getNotesCounter(String email) {
 		User user = userRepository.findUserByEmail(email);
 		if (user == null) {

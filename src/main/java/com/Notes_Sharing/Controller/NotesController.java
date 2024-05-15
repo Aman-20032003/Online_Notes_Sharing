@@ -64,10 +64,10 @@ public class NotesController {
 		return notesService.deleteNotes(email, filename);
 		
 	}
-//	@GetMapping("/subjectCounter/{email}")
-//	public int subjectCounter( @PathVariable String  email) {
-//	return notesService.getSubjectCounter(email);
-//		}
+	@GetMapping("/subjectCounter/{email}")
+	public int subjectCounter( @PathVariable String  email) {
+	return notesService.getSubjectCounter(email);
+		}
 	@GetMapping("/NoteCounter/{email}")
 	public int NotesCounter( @PathVariable String  email) {
 	return notesService.getNotesCounter(email);
