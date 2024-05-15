@@ -1,16 +1,23 @@
 package com.Notes_Sharing.Repository.Entity;
+import java.util.List;
 
+import org.apache.commons.lang3.builder.HashCodeExclude;
+import org.apache.commons.lang3.builder.ToStringExclude;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotEmpty;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Data
@@ -30,9 +37,13 @@ public class User {
 
 	@NotEmpty(message = "Password Cannot Be Null")
 	private String password;
-	
-	@ManyToOne
-private	Subject subject;
-	
-	
+	@OneToMany(mappedBy = "user")
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
+	private List<Notes> note;
+	@OneToMany(mappedBy = "user")
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
+	private List<Subject> subject;
+
 }
