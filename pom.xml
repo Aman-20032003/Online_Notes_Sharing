@@ -12,6 +12,8 @@
 	<groupId>com.Notes_Sharing</groupId>
 	<artifactId>Online_Notes-1</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+
 	<name>Online_Notes-1</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>

@@ -28,6 +28,9 @@ import com.Notes_Sharing.Repository.Entity.Notes;
 import com.Notes_Sharing.Repository.Entity.Subject;
 import com.Notes_Sharing.Repository.Entity.User;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class NotesService {
 	@Autowired
@@ -77,6 +80,7 @@ public class NotesService {
 
 				catch (IOException e) {
 					e.printStackTrace();
+					log.warn("File Not Upload {}", email);
 					logger.warning(email + " File Not Upload");
 					return new NotesResponse("File Not Upload", false);
 				}
